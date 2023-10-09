@@ -130,14 +130,19 @@ bool is_clickable_mode(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     
     switch (keycode) {
-        case KC_MY_BTN1:
-        case KC_MY_BTN2:
-        case KC_MY_BTN3:
+        case KC_MS_BTN1:
+        case KC_MS_BTN2:
+        case KC_MS_BTN3:
+        case KC_MS_BTN4:
+        case KC_MS_BTN5:
+        case KC_MS_BTN6:
+        case KC_MS_BTN7:
+        case KC_MS_BTN8:
         {
             report_mouse_t currentReport = pointing_device_get_report();
 
             // どこのビットを対象にするか。 Which bits are to be targeted?
-            uint8_t btn = 1 << (keycode - KC_MY_BTN1);
+            uint8_t btn = 1 << (keycode - KC_MS_BTN1);
             
             if (record->event.pressed) {
                 // ビットORは演算子の左辺と右辺の同じ位置にあるビットを比較して、両方のビットのどちらかが「1」の場合に「1」にします。

@@ -295,6 +295,13 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
                 current_h = rep_h / scroll_h_threshold * (user_config.mouse_scroll_h_reverse ? -1 : 1);
                 current_v = -rep_v / scroll_v_threshold * (user_config.mouse_scroll_v_reverse ? -1 : 1);
+
+                // 水平スクロールと垂直スクロールを入れ替える
+                int16_t buf;
+                buf = current_h;
+                current_h = current_v;
+                current_v = buf;
+
                 current_x = 0;
                 current_y = 0;
             }
